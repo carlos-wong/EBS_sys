@@ -21,11 +21,12 @@ class testinput(unittest.TestCase):
         
 class testorg(unittest.TestCase):
     def setUp(self):
-        self.readorg = Readorg()
+
         pass
     def tearDown(self):
         pass
     def testorg(self):
+        self.readorg = Readorg()
         assert self.readorg.ismark("*** casdcads") == 1
         assert self.readorg.ismark("* casdcdas") == 1
         assert self.readorg.ismark("** cadcads") == 1
@@ -34,10 +35,10 @@ class testorg(unittest.TestCase):
         assert self.readorg.ismark("      :@work:") == 0
         assert self.readorg.ismark("     CLOCK: [2013-01-29 Tue 15:26]--[2013-01-29 Tue 17:21] =>  1:55") == 0
         assert self.readorg.ismark("     可以判断msc_spl的数据。指定一个长度然后进行读取。应该指定第二阶") == 0
+        del(self.readorg)
 
     def testparse(self):
-        # print self.readorg.parsefile("./test_res/test.org")
-        # assert self.readorg.parsefile("./test_res/test.org") == [0,1,4,6,7,8,10,19,24,112,114,119,121,142,144,184,186,187,209,211,254,270,275,280,282,284,297,299,301,303,306,347,350,354,361,362,400]
+        self.readorg = Readorg()
         assert self.readorg.parsefile("./test_res/test.org") == [0, 1, 4, 6, 7, 8, 10, 15, 19, 24, 47, 60, 64, 66, 69, 74, 77, 83, 92, 95, 110, 112, 114, 119, 121, 135, 142, 144, 184, 186, 187, 194, 197, 200, 201, 203, 206, 209, 211, 254, 268, 270, 275, 280, 282, 284, 297, 299, 301, 303, 306, 308, 317, 325, 333, 334, 335, 337, 339, 341, 343, 345, 347, 350, 354, 355, 361, 362, 384, 390, 394, 397, 400]
         del(self.readorg)
         self.readorg = Readorg()
@@ -65,6 +66,9 @@ class testorg(unittest.TestCase):
         assert self.org.readSteps(3)[0] == 116
         assert self.org.readSteps(1)[0] == 324
         assert self.org.readSteps(2)[0] == 252
+        del(self.org)
+    def testgetdata(self):
+        pass
 
 
 if __name__ == '__main__':
