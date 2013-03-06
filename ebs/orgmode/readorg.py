@@ -3,6 +3,8 @@
 import sys
 import os
 import linecache
+import time
+import string
 
 class Readorg:
     def __init__(self):
@@ -15,6 +17,27 @@ class Readorg:
         #     self.cur += 1
         # return self.mark
 
+
+    def getRealClock(self,data):
+        self.timestamp = "=>  "
+        self.timerealclock = 0
+        for self.lines in data.split("\n"):
+            self.timepos = self.lines.find(self.timestamp)
+            # print self.timepos
+            # print self.lines[self.timepos]
+            if(self.timepos > 0):
+                # print self.lines[(self.timepos+len(self.timestamp)):]
+
+                self.timepart = self.lines[(self.timepos+len(self.timestamp)):].split(":")
+                # for self.timepart in self.lines[(self.timepos+len(self.timestamp)):].split(":"):
+                # print self.timepart
+                self.timerealclock += string.atoi(self.timepart[0])*60+string.atoi(self.timepart[1])
+        # print self.timerealclock
+        return self.timerealclock
+               
+
+    
+    
     def readStep(self):
         # print "start to read step step is ",self.step,""
         self.stepreturn = ''
