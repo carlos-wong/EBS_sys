@@ -7,6 +7,7 @@ class Readorg:
     def __init__(self):
         self.cur = 0
         self.mark = []
+        self.step = 0
         # for self.line in self.fp:
         #     if(self.ismark(self.line)):
         #         self.mark.append(self.cur)
@@ -19,7 +20,7 @@ class Readorg:
     def parsefile(self,filename):
         self.cur = 0
         print "start to parse file"
-        self.mark = []
+        # self.mark = []
         self.fp = open(filename)
         for self.line in self.fp:
             # print self.line

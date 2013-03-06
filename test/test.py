@@ -9,7 +9,7 @@ from ebs.orgmode.readorg import Readorg
 
 class testinput(unittest.TestCase):
     def setUp(self):
-        print "setUp"
+        # print "setUp"
         self.parseinput = Parseinput()
 
     def tearDown(self):
@@ -39,8 +39,8 @@ class testorg(unittest.TestCase):
         # print self.readorg.parsefile("./test_res/test.org")
         # assert self.readorg.parsefile("./test_res/test.org") == [0,1,4,6,7,8,10,19,24,112,114,119,121,142,144,184,186,187,209,211,254,270,275,280,282,284,297,299,301,303,306,347,350,354,361,362,400]
         assert self.readorg.parsefile("./test_res/test.org") == [0, 1, 4, 6, 7, 8, 10, 15, 19, 24, 47, 60, 64, 66, 69, 74, 77, 83, 92, 95, 110, 112, 114, 119, 121, 135, 142, 144, 184, 186, 187, 194, 197, 200, 201, 203, 206, 209, 211, 254, 268, 270, 275, 280, 282, 284, 297, 299, 301, 303, 306, 308, 317, 325, 333, 334, 335, 337, 339, 341, 343, 345, 347, 350, 354, 355, 361, 362, 384, 390, 394, 397, 400]
-        # del(self.readorg)
-        # self.readorg = Readorg()
+        del(self.readorg)
+        self.readorg = Readorg()
         assert self.readorg.parsefile("./test_res/test1.org") == [0,2,7,11,16,39,52,56,58,61,66]
 
     
