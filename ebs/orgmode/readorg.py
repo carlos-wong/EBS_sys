@@ -34,8 +34,25 @@ class Readorg:
                 self.timerealclock += string.atoi(self.timepart[0])*60+string.atoi(self.timepart[1])
         # print self.timerealclock
         return self.timerealclock
+    def getEbsTime(self,data):
+        self.ebstimestamp = ":Effort:  "
+        self.timerealclock = 0
+        for self.lines in data.split("\n"):
+            self.timepos = self.lines.find(self.ebstimestamp)
+            if(self.timepos > 0):
+                self.timepart = self.lines[(self.timepos+len(self.ebstimestamp)):]
+                print self.timepart
+                if(":" in self.timepart):
+                    self.timepart = self.lines[(self.timepos+len(self.ebstimestamp)):].split(":")
+                    self.timerealclock += string.atoi(self.timepart[0])*60+string.atoi(self.timepart[1])
+                else:
+                    self.timerealclock += string.atoi(self.timepart)
+                break
+        
                
 
+        print self.timerealclock
+        return self.timerealclock
     
     
     def readStep(self):

@@ -37,6 +37,10 @@ class testorg2(unittest.TestCase):
     def testgetclok(self):
         assert self.org.getRealClock(self.org.readSteps(4)[1]) == 509
         assert self.org.getRealClock(self.org.readSteps(9)[1]) == 6
+    def testgetebs(self):
+        self.org.getEbsTime(self.org.readSteps(4)[1])
+        self.org.getEbsTime(self.org.readSteps(9)[1])
+
 
 class testorg1(unittest.TestCase):
     def setUp(self):
