@@ -2,6 +2,7 @@
 
 import sys
 import os
+import linecache
 
 class Readorg:
     def __init__(self):
@@ -15,11 +16,39 @@ class Readorg:
         # return self.mark
 
     def readStep(self):
-        pass
+        # print "start to read step step is ",self.step,""
+        self.stepreturn = ''
+        if((self.mark[self.step+1] - self.mark[self.step]) == 1):
+            self.stepreturn = "empty"
+        else:
+            for self.readline in range(self.mark[self.step],self.mark[self.step+1]-1):
+                # print
+                # linecache.getline(self.filename,self.readline+1)
+                # print "read lien is :",self.readline 
+                self.stepreturn += linecache.getline(self.filename,self.readline+2)
+        self.step += 1
+        
+        # print "step is ",self.step,"length is ",len(self.stepreturn)
+        return [len(self.stepreturn),self.stepreturn]
 
+    def readSteps(self,step):
+        self.stepreturn = ''
+        if((self.mark[step+1] - self.mark[step]) == 1):
+            self.stepreturn = "empty"
+        else:
+            for self.readline in range(self.mark[step],self.mark[step+1]-1):
+                # print
+                # linecache.getline(self.filename,self.readline+1)
+                # print "read lien is :",self.readline 
+                self.stepreturn += linecache.getline(self.filename,self.readline+2)
+            
+        # print "step is ",step,"length is ",len(self.stepreturn)
+        return [len(self.stepreturn),self.stepreturn]
+    
     def parsefile(self,filename):
         self.cur = 0
-        print "start to parse file"
+        self.filename = filename
+        # print "start to parse file"
         # self.mark = []
         self.fp = open(filename)
         for self.line in self.fp:

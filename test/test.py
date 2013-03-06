@@ -42,7 +42,30 @@ class testorg(unittest.TestCase):
         del(self.readorg)
         self.readorg = Readorg()
         assert self.readorg.parsefile("./test_res/test1.org") == [0,2,7,11,16,39,52,56,58,61,66]
+        del(self.readorg)
+    def testreadstep(self):
+        self.org = Readorg()
+        assert self.org.parsefile("./test_res/test.org") == [0, 1, 4, 6, 7, 8, 10, 15, 19, 24, 47, 60, 64, 66, 69, 74, 77, 83, 92, 95, 110, 112, 114, 119, 121, 135, 142, 144, 184, 186, 187, 194, 197, 200, 201, 203, 206, 209, 211, 254, 268, 270, 275, 280, 282, 284, 297, 299, 301, 303, 306, 308, 317, 325, 333, 334, 335, 337, 339, 341, 343, 345, 347, 350, 354, 355, 361, 362, 384, 390, 394, 397, 400]
 
-    
+        assert self.org.readStep()[0] == 5
+        assert self.org.readStep()[0] == 237
+        assert self.org.readStep()[0] == 33
+        assert self.org.readStep()[0] == 5
+        assert self.org.readSteps(1)[0] == 237
+        assert self.org.readSteps(0)[0] == 5
+        assert self.org.readSteps(2)[0] == 33
+        del(self.org)
+        self.org = Readorg()
+        assert self.org.parsefile("./test_res/test1.org") == [0,2,7,11,16,39,52,56,58,61,66]
+        assert self.org.readStep()[0] == 48
+        assert self.org.readStep()[0] == 324
+        assert self.org.readStep()[0] == 252
+        assert self.org.readStep()[0] == 116
+        assert self.org.readSteps(0)[0] == 48
+        assert self.org.readSteps(3)[0] == 116
+        assert self.org.readSteps(1)[0] == 324
+        assert self.org.readSteps(2)[0] == 252
+
+
 if __name__ == '__main__':
     unittest.main()
