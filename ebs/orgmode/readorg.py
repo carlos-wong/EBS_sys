@@ -41,7 +41,7 @@ class Readorg:
             self.timepos = self.lines.find(self.ebstimestamp)
             if(self.timepos > 0):
                 self.timepart = self.lines[(self.timepos+len(self.ebstimestamp)):]
-                print self.timepart
+                # print self.timepart
                 if(":" in self.timepart):
                     self.timepart = self.lines[(self.timepos+len(self.ebstimestamp)):].split(":")
                     self.timerealclock += string.atoi(self.timepart[0])*60+string.atoi(self.timepart[1])
@@ -51,7 +51,7 @@ class Readorg:
         
                
 
-        print self.timerealclock
+        # print self.timerealclock
         return self.timerealclock
     
     

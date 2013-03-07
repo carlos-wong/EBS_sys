@@ -18,6 +18,9 @@ class testinput(unittest.TestCase):
         assert self.parseinput.get_input("./test_res/file.txt") == "./test_res/file.txt"
         assert self.parseinput.get_input("./test_rest/1231231") == ''
         assert self.parseinput.get_input("./test_rest") == ''
+
+
+        
 class testorg2(unittest.TestCase):
     def setUp(self):
         self.org = Readorg()
@@ -38,8 +41,8 @@ class testorg2(unittest.TestCase):
         assert self.org.getRealClock(self.org.readSteps(4)[1]) == 509
         assert self.org.getRealClock(self.org.readSteps(9)[1]) == 6
     def testgetebs(self):
-        self.org.getEbsTime(self.org.readSteps(4)[1])
-        self.org.getEbsTime(self.org.readSteps(9)[1])
+        assert self.org.getEbsTime(self.org.readSteps(4)[1]) == 1440
+        assert self.org.getEbsTime(self.org.readSteps(3)[1]) == 90
 
 
 class testorg1(unittest.TestCase):
